@@ -1,0 +1,325 @@
+CREATE TABLE UNVAN (
+    unvanID Number PRIMARY KEY NOT NULL ,
+    unvanAd varchar2(20) ,
+    unvanTanım varchar2(50)
+)
+
+CREATE TABLE KLINIK (
+    klinikID Number PRIMARY KEY NOT NULL ,
+    klinikAd varchar2(40) UNIQUE,
+    klinikUcret varchar2(15),
+    dahiliTel char(5) UNIQUE
+);
+
+CREATE TABLE PERSONEL (
+    personelID number PRIMARY KEY NOT NULL,
+    personelAd varchar2(25),
+    personelSoyad varchar2(25) ,
+    personelAdres varchar2(80),
+    personelDtarihi date,
+    personelTcno char(11) UNIQUE,
+    personelGorev varchar2(50),
+    personelTelno char(11),
+    personelEposta varchar2(50) UNIQUE,
+    personelOgrenim varchar2(25),
+    personelDiplomano char(7) UNIQUE,
+    personelSicilno char(7) UNIQUE,
+    unvanID NUMBER not null UNIQUE,
+    klinikID NUMBER, 
+    parola VARCHAR2(255) 
+    CONSTRAINT fk_unvan FOREIGN KEY (unvanID) REFERENCES UNVAN(unvanID),
+    CONSTRAINT fk_klinik FOREIGN KEY (klinikID) REFERENCES KLINIK(klinikID) 
+);
+
+
+CREATE TABLE HASTA (
+    hastaNo number PRIMARY KEY NOT NULL,
+    hastalAd varchar2(25),
+    hastaSoyad varchar2(25) ,
+    hastaAdres varchar2(80),
+    hastaDtarihi date,
+    hastaTcno char(11) UNIQUE,
+    hastaTelno char(11),
+    hastaEposta varchar2(50) UNIQUE,
+    hastaCinsiyet char(1),
+    sosyalGuvence varchar2(50),
+    kangrubu varchar2(5),
+    parola VARCHAR2(255) 
+);
+
+CREATE TABLE MUAYENE(
+    muayeneID number PRIMARY KEY NOT NULL,
+    hastaNo number NOT NULL,
+    doktorID number,
+    KlinikID NUMBER NOT NULL,
+    sikayet varchar2(200),
+    muayeneTarihi date,
+    muayeneTeshis VARCHAR2(200), 
+    muayeneSonuc VARCHAR2(200),
+    KABUL_SEKLI VARCHAR(100),
+    GELDIGI_BIRIM VARCHAR(100),
+    CIKIS_DURUMU VARCHAR(100),
+    CIKIS_SEKLI VARCHAR(100),
+    VAKA_SEKLI VARCHAR(100),
+    MUAYENE_CIKIS_TARIHI DATE,
+    CONSTRAINT fk_muayene_hasta FOREIGN KEY (hastaNo) REFERENCES Hasta(HastaNo), 
+    CONSTRAINT fk_muayene_klinik FOREIGN KEY (KlinikID) REFERENCES Klinik(KlinikID), 
+    CONSTRAINT fk_muayene_doktor FOREIGN KEY (doktorID) REFERENCES Personel(PersonelID) 
+);
+
+CREATE TABLE SERVIS(
+    servisID NUMBER PRIMARY KEY, 
+    servisAdı VARCHAR2(100) NOT NULL,
+    servisSorumlu NUMBER,
+    servisTelNo VARCHAR2(15), 
+    servisTuru VARCHAR2(50),
+    Odalar VARCHAR2(50),
+    CONSTRAINT fk_servis_personel FOREIGN KEY (servisSorumlu) REFERENCES Personel(personelID) 
+);
+
+CREATE TABLE ODALAR (
+    odaID NUMBER PRIMARY KEY,
+    odaNo VARCHAR2(10) NOT NULL,
+    servisID NUMBER, 
+    donanım VARCHAR2(200), 
+    odaKapasitesi NUMBER, 
+    turu VARCHAR2(50), 
+    CONSTRAINT fk_odalar_servis FOREIGN KEY (servisID) REFERENCES SERVIS(servisID) 
+);
+CREATE TABLE HastaYatis (
+    yatisID NUMBER PRIMARY KEY,
+    hastaNo NUMBER NOT NULL,
+    servisID NUMBER NOT NULL,
+    odaID NUMBER NOT NULL,
+    yatakID number not null,
+    yatisTarihi DATE NOT NULL,
+    cikisTarihi DATE,
+    doktorID NUMBER NOT NULL,
+    CONSTRAINT fk_yatis_hasta FOREIGN KEY (hastaNo) REFERENCES HASTA(hastaNo),
+    CONSTRAINT fk_yatis_servis FOREIGN KEY (servisID) REFERENCES SERVIS(servisID),
+    CONSTRAINT fk_yatis_oda FOREIGN KEY (odaID) REFERENCES ODALAR(odaID),
+    CONSTRAINT fk_yatis_doktor FOREIGN KEY (doktorID) REFERENCES PERSONEL(personelID),
+    CONSTRAINT fk_yatis_yatak FOREIGN KEY (yatakID) REFERENCES YATAK(yatakID)
+);
+
+
+CREATE TABLE GORUNTULEME (
+    goruntulemeID NUMBER PRIMARY KEY, 
+    goruntulemeTuru VARCHAR2(50),   
+);
+
+CREATE TABLE GoruntulemeMuayene (
+    goruntulemeMuayeneID NUMBER PRIMARY KEY,
+    goruntulemeID NUMBER NOT NULL,
+    muayeneID NUMBER NOT NULL, 
+    hastaNo NUMBER NOT NULL, 
+    klinikID NUMBER NOT NULL, 
+    doktorID NUMBER,
+    goruntulemeTarihi DATE, 
+    sonuc VARCHAR2(200),
+    CONSTRAINT fk_goruntulememuayeneg FOREIGN KEY (goruntulemeID) REFERENCES goruntuleme(goruntulemeID), 
+    CONSTRAINT fk_goruntulememuayenem FOREIGN KEY (muayeneID) REFERENCES muayene(muayeneID)
+    CONSTRAINT fk_goruntuleme_hasta FOREIGN KEY (hastaNo) REFERENCES Hasta(HastaNo), 
+    CONSTRAINT fk_goruntuleme_klinik FOREIGN KEY (klinikID) REFERENCES Klinik(KlinikID),
+    CONSTRAINT fk_goruntuleme_doktor FOREIGN KEY (doktorID) REFERENCES Personel(personelID)
+);
+
+CREATE TABLE Tahlil (
+    tahlilID NUMBER PRIMARY KEY, 
+    tahlilDetay VARCHAR2(255),
+    tahlilTuru VARCHAR2(50), 
+);
+
+CREATE TABLE TahlilMuayene (
+    tahlilMuayeneID NUMBER PRIMARY KEY,
+    tahlilID NUMBER NOT NULL,
+    HASTANO NUMBER NOT NULL 
+    muayeneID NUMBER NOT NULL, 
+    adet number,
+    tahlilTarih DATE NOT NULL,
+    durum varchar(30),
+    doktorID number not null,
+    CONSTRAINT fk_tahlil_hasta FOREIGN KEY (hastano) REFERENCES HASTA(HASTANO)
+    CONSTRAINT fk_tahlilMuayenet FOREIGN KEY (tahlilID) REFERENCES Tahlil(tahlilID), 
+    CONSTRAINT fk_tahlilMuayenetm FOREIGN KEY (muayeneID) REFERENCES Muayene(muayeneID),
+    CONSTRAINT fk_tm_dokorId FOREIGN KEY (doktorID) REFERENCES Personel(personelID)
+);
+
+CREATE TABLE Recete (
+    Hekim VARCHAR(100),
+    ReceteTarihi DATE,
+    ReceteTipi VARCHAR(50),
+    muayeneID NUMBER,
+    CONSTRAINT fk_recete_muayene FOREIGN KEY (muayeneID) REFERENCES Muayene(muayeneID)
+);
+
+CREATE TABLE Ilac (
+    ilacID NUMBER PRIMARY KEY,
+    ilacAd VARCHAR2(100) NOT NULL,
+    ilacKullanimi VARCHAR2(255), 
+    periyod number, 
+    periyodBirimi varchar(25),
+    periyodAdet number,
+    periyodDoz number
+
+);
+
+CREATE TABLE ReceteIlac (
+    receteIlacID NUMBER PRIMARY KEY, 
+    receteID NUMBER NOT NULL, 
+    ilacID NUMBER NOT NULL,
+    ilacAd VARCHAR2(100) NOT NULL,
+    ilacKullanimi VARCHAR2(255), 
+    periyod number, 
+    periyodBirimi varchar(25),
+    periyodAdet number,
+    periyodDoz number
+    CONSTRAINT fk_receteIlacr FOREIGN KEY (receteID) REFERENCES Recete(receteID),
+    CONSTRAINT fk_receteIlaci FOREIGN KEY (ilacID) REFERENCES Ilac(ilacID) 
+);
+
+CREATE TABLE Hizmet (
+    hizmetID NUMBER PRIMARY KEY, 
+    hizmetAdı VARCHAR2(100) NOT NULL, 
+    hizmetTuru VARCHAR2(50) NOT NULL
+);
+
+CREATE TABLE Ucret (
+    ucretID NUMBER PRIMARY KEY, 
+    hizmetID NUMBER,
+    tutar NUMBER NOT NULL, 
+    gecerlilikTarihi DATE, 
+    aciklama VARCHAR2(255), 
+    muayeneID NUMBER, 
+    CONSTRAINT fk_ucret_hizmet FOREIGN KEY (hizmetID) REFERENCES Hizmet(hizmetID),
+    CONSTRAINT fk_ucret_muayene FOREIGN KEY (muayeneID) REFERENCES muayene(MuayeneID) 
+);
+
+CREATE TABLE OdemeFatura (
+    faturaID NUMBER PRIMARY KEY,
+    ucretID NUMBER, 
+    faturaTarihi DATE NOT NULL, 
+    toplamTutar NUMBER NOT NULL, 
+    odemeDurumu VARCHAR2(50) NOT NULL, 
+    aciklama VARCHAR2(255), 
+    CONSTRAINT fk_odemeFatura_ucret FOREIGN KEY (ucretID) REFERENCES Ucret(ucretID)
+);
+
+CREATE TABLE Muhasebe (
+    muhasebeID NUMBER PRIMARY KEY, 
+    faturaID NUMBER, 
+    tarih DATE NOT NULL,
+    tutar NUMBER NOT NULL,
+    aciklama VARCHAR2(255), 
+    CONSTRAINT fk_muhasebe_fatura FOREIGN KEY (faturaID) REFERENCES OdemeFatura(faturaID) 
+);
+
+CREATE TABLE Tedarikci (
+    tedarikciID NUMBER PRIMARY KEY, 
+    tedarikciAd VARCHAR2(100) NOT NULL,
+    adres VARCHAR2(255), 
+    telefon VARCHAR2(20),
+    eposta VARCHAR2(100),
+    temsilciAdi VARCHAR2(100), 
+    urunTuru VARCHAR2(50)
+);
+
+CREATE TABLE TibbiCihaz (
+    cihazID NUMBER PRIMARY KEY, 
+    cihazAdi VARCHAR2(100) NOT NULL,
+    tedarikciID NUMBER, 
+    sonBakimTarihi DATE, 
+    durum VARCHAR2(50), 
+    bakimPeriyodu VARCHAR2(50), 
+    CONSTRAINT fk_tibbiCihaz_tedarikci FOREIGN KEY (tedarikciID) REFERENCES Tedarikci(tedarikciID) 
+);
+
+CREATE TABLE Stok (
+    stokID NUMBER PRIMARY KEY,
+    urunAdi VARCHAR2(100) NOT NULL, 
+    urunTuru VARCHAR2(50) NOT NULL, 
+    miktar NUMBER NOT NULL, 
+    tedarikciID NUMBER, 
+    siparisDurumu VARCHAR2(50),
+    sonGuncellemeTarihi DATE,
+    CONSTRAINT fk_stok_tedarikci FOREIGN KEY (tedarikciID) REFERENCES Tedarikci(tedarikciID) 
+);
+
+CREATE TABLE BakimOnarim (
+    bakimOnarimID NUMBER PRIMARY KEY,
+    cihazID NUMBER, 
+    bakimTarihi DATE, 
+    bakimTuru VARCHAR2(50), 
+    ssonrakiBakimTarihi DATE,
+    sorumluPersonelID NUMBER, 
+    bakimDurumu VARCHAR2(50),
+    aciklama VARCHAR2(255), 
+    CONSTRAINT fk_cihaz FOREIGN KEY (cihazID) REFERENCES TibbiCihaz(cihazID), 
+    CONSTRAINT fk_bakimOnarim_personel FOREIGN KEY (SorumluPersonelID) REFERENCES Personel(personelID)
+);
+
+CREATE TABLE Siparis (
+    siparisID NUMBER PRIMARY KEY,
+    stokID NUMBER NOT NULL,
+    tedarikciID NUMBER NOT NULL,
+    miktar NUMBER NOT NULL,
+    siparisTarihi DATE,
+    teslimTarihi DATE,
+    siparisDurumu VARCHAR2(50),
+    CONSTRAINT fk_siparis_stok FOREIGN KEY (stokID) REFERENCES Stok(stokID),
+    CONSTRAINT fk_siparis_tedarikci FOREIGN KEY (tedarikciID) REFERENCES Tedarikci(tedarikciID)
+);
+
+CREATE TABLE Randevu (
+    randevuID NUMBER PRIMARY KEY,
+    hastaNo NUMBER NOT NULL,
+    doktorID NUMBER NOT NULL,
+    klinikID NUMBER NOT NULL,
+    randevuTarihi DATE NOT NULL,
+    randevuSaati VARCHAR2(5) NOT NULL,
+    durum VARCHAR2(20), -- (Örneğin: 'Planlandı', 'Tamamlandı', 'İptal Edildi')
+    CONSTRAINT fk_randevu_hasta FOREIGN KEY (hastaNo) REFERENCES Hasta(hastaNo),
+    CONSTRAINT fk_randevu_doktor FOREIGN KEY (doktorID) REFERENCES Personel(personelID),
+    CONSTRAINT fk_randevu_klinik FOREIGN KEY (klinikID) REFERENCES Klinik(klinikID)
+);
+ALTER TABLE MUAYENE ADD (randevuID NUMBER);
+ALTER TABLE MUAYENE ADD CONSTRAINT fk_muayene_randevu FOREIGN KEY (randevuID) REFERENCES Randevu(randevuID);
+
+
+CREATE TABLE SEVK (
+    sevkID NUMBER PRIMARY KEY,
+    muayeneID NUMBER NOT NULL,
+    sevkBirimi VARCHAR2(100),
+    sevkKodu VARCHAR2(50),
+    doktorID NUMBER,
+    limit NUMBER,
+    mevcutSira NUMBER,
+    bekleyenSira NUMBER,
+    siraNo NUMBER,
+    CONSTRAINT fk_sevk_muayene FOREIGN KEY (muayeneID) REFERENCES MUAYENE(muayeneID),
+    CONSTRAINT fk_sevk_doktor FOREIGN KEY (doktorID) REFERENCES Personel(personelID)
+);
+
+CREATE TABLE TANI (
+    TANI_ID INT PRIMARY KEY,           
+    MUAYENE_ID INT,                     
+    TANI_ACIKLAMASI VARCHAR(255),       
+    TANI_TURU VARCHAR(100),            
+    TARIH DATE,                        
+    CONSTRAINT fk_muayene FOREIGN KEY (MUAYENE_ID) REFERENCES MUAYENE(MUAYENEID)
+);
+CREATE TABLE RANDEVULAR (
+    RANDEVU_ID NUMBER GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY,
+    DOKTOR_ID NUMBER NOT NULL,
+    RANDEVU_TARIHI TIMESTAMP NOT NULL,
+    DOLULUK_DURUMU CHAR(1) NOT NULL, -- '1': Dolu, '0': Boş
+    CONSTRAINT FK_DOKTOR_randevu FOREIGN KEY (DOKTOR_ID) REFERENCES personel(personelid)
+);
+CREATE TABLE DOKTOR_CALISMA_SAATLERI (
+    ID NUMBER GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY,
+    DOKTOR_ID NUMBER NOT NULL,
+    HAFTA_GUNU NUMBER(1) NOT NULL, -- 1: Pazartesi, 7: Pazar
+    BASLANGIC_SAATI TIMESTAMP NOT NULL,
+    BITIS_SAATI TIMESTAMP NOT NULL,
+    CONSTRAINT FK_DOKTOR_ID FOREIGN KEY (DOKTOR_ID) REFERENCES DOKTORLAR(DOKTOR_ID)
+);

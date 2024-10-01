@@ -1,0 +1,841 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="packages\EntityFramework.6.5.1\build\EntityFramework.props" Condition="Exists('packages\EntityFramework.6.5.1\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BA3BB3B3-EB4A-4E90-BDEC-20E228769A70}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>HastaneOtomasyon</RootNamespace>
+    <AssemblyName>HastaneOtomasyon</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.5.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.5.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Guna.UI">
+      <HintPath>..\..\..\..\..\iso\Guna.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Bcl.AsyncInterfaces.8.0.0\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.EntityFrameworkCore, Version=2.1.14.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.EntityFrameworkCore.2.1.14\lib\netstandard2.0\Microsoft.EntityFrameworkCore.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.EntityFrameworkCore.Abstractions, Version=2.1.14.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.EntityFrameworkCore.Abstractions.2.1.14\lib\netstandard2.0\Microsoft.EntityFrameworkCore.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.EntityFrameworkCore.Relational, Version=2.1.14.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.EntityFrameworkCore.Relational.2.1.14\lib\netstandard2.0\Microsoft.EntityFrameworkCore.Relational.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Caching.Abstractions, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.Caching.Abstractions.2.1.1\lib\netstandard2.0\Microsoft.Extensions.Caching.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Caching.Memory, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.Caching.Memory.2.1.1\lib\netstandard2.0\Microsoft.Extensions.Caching.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.Configuration.8.0.0\lib\net462\Microsoft.Extensions.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.Abstractions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.Configuration.Abstractions.8.0.0\lib\net462\Microsoft.Extensions.Configuration.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.Binder, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.Configuration.Binder.2.1.1\lib\netstandard2.0\Microsoft.Extensions.Configuration.Binder.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.FileExtensions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.Configuration.FileExtensions.8.0.0\lib\net462\Microsoft.Extensions.Configuration.FileExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.Configuration.Json.8.0.0\lib\net462\Microsoft.Extensions.Configuration.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.DependencyInjection.2.1.1\lib\net461\Microsoft.Extensions.DependencyInjection.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.DependencyInjection.Abstractions.2.1.1\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.FileProviders.Abstractions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.FileProviders.Abstractions.8.0.0\lib\net462\Microsoft.Extensions.FileProviders.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.FileProviders.Physical, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.FileProviders.Physical.8.0.0\lib\net462\Microsoft.Extensions.FileProviders.Physical.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.FileSystemGlobbing, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.FileSystemGlobbing.8.0.0\lib\net462\Microsoft.Extensions.FileSystemGlobbing.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.Logging.2.1.1\lib\netstandard2.0\Microsoft.Extensions.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.Logging.Abstractions.2.1.1\lib\netstandard2.0\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Options, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.Options.2.1.1\lib\netstandard2.0\Microsoft.Extensions.Options.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Primitives, Version=8.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.Primitives.8.0.0\lib\net462\Microsoft.Extensions.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Oracle.DataAccess, Version=4.112.3.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=AMD64">
+      <HintPath>packages\odp.net.x64.112.3.20\lib\net40\Oracle.DataAccess.dll</HintPath>
+    </Reference>
+    <Reference Include="Oracle.ManagedDataAccess, Version=4.122.23.1, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
+      <HintPath>packages\Oracle.ManagedDataAccess.23.5.1\lib\net472\Oracle.ManagedDataAccess.dll</HintPath>
+    </Reference>
+    <Reference Include="Remotion.Linq, Version=2.2.0.0, Culture=neutral, PublicKeyToken=fee00910d6e5f53b, processorArchitecture=MSIL">
+      <HintPath>packages\Remotion.Linq.2.2.0\lib\net45\Remotion.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Collections.Immutable, Version=1.2.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Collections.Immutable.1.5.0\lib\netstandard2.0\System.Collections.Immutable.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.ComponentModel.Annotations.4.5.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Common, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Data.Common.4.3.0\lib\net451\System.Data.Common.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.OracleClient, Version=1.0.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\System.Data.OracleClient.1.0.8\lib\netstandard2.0\System.Data.OracleClient.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=6.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Diagnostics.DiagnosticSource.6.0.1\lib\net461\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Formats.Asn1, Version=8.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Formats.Asn1.8.0.1\lib\net462\System.Formats.Asn1.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Interactive.Async, Version=3.0.3000.0, Culture=neutral, PublicKeyToken=94bc3704cddfc263, processorArchitecture=MSIL">
+      <HintPath>packages\System.Interactive.Async.3.1.1\lib\net46\System.Interactive.Async.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Text.Encodings.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Text.Encodings.Web.8.0.0\lib\net462\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Json, Version=8.0.0.4, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Text.Json.8.0.4\lib\net462\System.Text.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DataAccess\Cihaz.cs" />
+    <Compile Include="DataAccess\Defter.cs" />
+    <Compile Include="DataAccess\Doctor.cs" />
+    <Compile Include="DataAccess\Hasta.cs" />
+    <Compile Include="DataAccess\Polyclinic.cs" />
+    <Compile Include="DataAccess\Servis.cs" />
+    <Compile Include="DataAccess\Session.cs" />
+    <Compile Include="DataAccess\SessionManager.cs" />
+    <Compile Include="DoktorModül\HastaKabul.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DoktorModül\HastaKabul.Designer.cs">
+      <DependentUpon>HastaKabul.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DoktorModül\Poliklinik\Defter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DoktorModül\Poliklinik\Defter.Designer.cs">
+      <DependentUpon>Defter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DoktorModül\Poliklinik\HastaGecmis.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DoktorModül\Poliklinik\HastaGecmis.Designer.cs">
+      <DependentUpon>HastaGecmis.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DoktorModül\Poliklinik\Ilac.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DoktorModül\Poliklinik\Ilac.Designer.cs">
+      <DependentUpon>Ilac.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DoktorModül\Poliklinik\Radyoloji.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DoktorModül\Poliklinik\Radyoloji.Designer.cs">
+      <DependentUpon>Radyoloji.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DoktorModül\Poliklinik\Tahlil.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DoktorModül\Poliklinik\Tahlil.Designer.cs">
+      <DependentUpon>Tahlil.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DoktorModül\Poliklinik\TanıEkle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DoktorModül\Poliklinik\TanıEkle.Designer.cs">
+      <DependentUpon>TanıEkle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DoktorModül\Profil\IletisimBilgileri.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DoktorModül\Profil\IletisimBilgileri.Designer.cs">
+      <DependentUpon>IletisimBilgileri.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DoktorModül\Profil\KisiselBilgiler.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DoktorModül\Profil\KisiselBilgiler.Designer.cs">
+      <DependentUpon>KisiselBilgiler.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DoktorModül\Profil\ParolaIslemleri.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DoktorModül\Profil\ParolaIslemleri.Designer.cs">
+      <DependentUpon>ParolaIslemleri.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GecmisRandevularım.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GecmisRandevularım.Designer.cs">
+      <DependentUpon>GecmisRandevularım.cs</DependentUpon>
+    </Compile>
+    <Compile Include="hastaHome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="hastaHome.Designer.cs">
+      <DependentUpon>hastaHome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="hastaKayit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="hastaKayit.Designer.cs">
+      <DependentUpon>hastaKayit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="hastaRandevu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="hastaRandevu.Designer.cs">
+      <DependentUpon>hastaRandevu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IletisimBilgileri.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IletisimBilgileri.Designer.cs">
+      <DependentUpon>IletisimBilgileri.cs</DependentUpon>
+    </Compile>
+    <Compile Include="KimlikBilgileri.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KimlikBilgileri.Designer.cs">
+      <DependentUpon>KimlikBilgileri.cs</DependentUpon>
+    </Compile>
+    <Compile Include="login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="login.Designer.cs">
+      <DependentUpon>login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ParolaIslemleri.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ParolaIslemleri.Designer.cs">
+      <DependentUpon>ParolaIslemleri.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PersonelModül\CihazIslemleri\BakimOnarimEkle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PersonelModül\CihazIslemleri\BakimOnarimEkle.Designer.cs">
+      <DependentUpon>BakimOnarimEkle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PersonelModül\CihazIslemleri\BakimOnarimGuncelle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PersonelModül\CihazIslemleri\BakimOnarimGuncelle.Designer.cs">
+      <DependentUpon>BakimOnarimGuncelle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PersonelModül\CihazIslemleri\BakimveOnarim.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PersonelModül\CihazIslemleri\BakimveOnarim.Designer.cs">
+      <DependentUpon>BakimveOnarim.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PersonelModül\CihazIslemleri\CihazEkle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PersonelModül\CihazIslemleri\CihazEkle.Designer.cs">
+      <DependentUpon>CihazEkle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PersonelModül\CihazIslemleri\CihazGuncelle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PersonelModül\CihazIslemleri\CihazGuncelle.Designer.cs">
+      <DependentUpon>CihazGuncelle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PersonelModül\CihazIslemleri\CihazIslemleri.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PersonelModül\CihazIslemleri\CihazIslemleri.Designer.cs">
+      <DependentUpon>CihazIslemleri.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PersonelModül\HastaIslemleri\BilgileriGoruntule.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PersonelModül\HastaIslemleri\BilgileriGoruntule.Designer.cs">
+      <DependentUpon>BilgileriGoruntule.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PersonelModül\HastaIslemleri\HastaIslemleri.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PersonelModül\HastaIslemleri\HastaIslemleri.Designer.cs">
+      <DependentUpon>HastaIslemleri.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PersonelModül\HastaIslemleri\HastaRandevular.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PersonelModül\HastaIslemleri\HastaRandevular.Designer.cs">
+      <DependentUpon>HastaRandevular.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PersonelModül\HastaIslemleri\HastaReceteleri.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PersonelModül\HastaIslemleri\HastaReceteleri.Designer.cs">
+      <DependentUpon>HastaReceteleri.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PersonelModül\HastaIslemleri\MuayeneKayıtları.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PersonelModül\HastaIslemleri\MuayeneKayıtları.Designer.cs">
+      <DependentUpon>MuayeneKayıtları.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PersonelModül\HastaIslemleri\TahllGoruntulemeSonucları.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PersonelModül\HastaIslemleri\TahllGoruntulemeSonucları.Designer.cs">
+      <DependentUpon>TahllGoruntulemeSonucları.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PersonelModül\KlinikIslemleri\KlinikEkle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PersonelModül\KlinikIslemleri\KlinikEkle.Designer.cs">
+      <DependentUpon>KlinikEkle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PersonelModül\KlinikIslemleri\KlinikGuncelle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PersonelModül\KlinikIslemleri\KlinikGuncelle.Designer.cs">
+      <DependentUpon>KlinikGuncelle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PersonelModül\KlinikIslemleri\KlinikIslemleri.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PersonelModül\KlinikIslemleri\KlinikIslemleri.Designer.cs">
+      <DependentUpon>KlinikIslemleri.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PersonelModül\KlinikIslemleri\OdaEkle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PersonelModül\KlinikIslemleri\OdaEkle.Designer.cs">
+      <DependentUpon>OdaEkle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PersonelModül\KlinikIslemleri\OdaGuncelle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PersonelModül\KlinikIslemleri\OdaGuncelle.Designer.cs">
+      <DependentUpon>OdaGuncelle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PersonelModül\KlinikIslemleri\OdaIslemleri.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PersonelModül\KlinikIslemleri\OdaIslemleri.Designer.cs">
+      <DependentUpon>OdaIslemleri.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PersonelModül\KlinikIslemleri\ServisEkle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PersonelModül\KlinikIslemleri\ServisEkle.Designer.cs">
+      <DependentUpon>ServisEkle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PersonelModül\KlinikIslemleri\ServisGuncelle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PersonelModül\KlinikIslemleri\ServisGuncelle.Designer.cs">
+      <DependentUpon>ServisGuncelle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PersonelModül\KlinikIslemleri\ServisIslemleri.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PersonelModül\KlinikIslemleri\ServisIslemleri.Designer.cs">
+      <DependentUpon>ServisIslemleri.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PersonelModül\KlinikIslemleri\YatakEkle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PersonelModül\KlinikIslemleri\YatakEkle.Designer.cs">
+      <DependentUpon>YatakEkle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PersonelModül\KlinikIslemleri\YatakGuncelle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PersonelModül\KlinikIslemleri\YatakGuncelle.Designer.cs">
+      <DependentUpon>YatakGuncelle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PersonelModül\KlinikIslemleri\YatakIslemleri.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PersonelModül\KlinikIslemleri\YatakIslemleri.Designer.cs">
+      <DependentUpon>YatakIslemleri.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PersonelModül\PersonelIslemleri\BilgileriGoruntule.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PersonelModül\PersonelIslemleri\BilgileriGoruntule.Designer.cs">
+      <DependentUpon>BilgileriGoruntule.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PersonelModül\PersonelIslemleri\EgitimveSertifikalar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PersonelModül\PersonelIslemleri\EgitimveSertifikalar.Designer.cs">
+      <DependentUpon>EgitimveSertifikalar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PersonelModül\PersonelIslemleri\IletisimBilgileriniGuncelle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PersonelModül\PersonelIslemleri\IletisimBilgileriniGuncelle.Designer.cs">
+      <DependentUpon>IletisimBilgileriniGuncelle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PersonelModül\PersonelIslemleri\PersonelEkleme.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PersonelModül\PersonelIslemleri\PersonelEkleme.Designer.cs">
+      <DependentUpon>PersonelEkleme.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PersonelModül\PersonelIslemleri\PersonelGuncelle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PersonelModül\PersonelIslemleri\PersonelGuncelle.Designer.cs">
+      <DependentUpon>PersonelGuncelle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PersonelModül\PersonelIslemleri\PersonelIslemleri.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PersonelModül\PersonelIslemleri\PersonelIslemleri.Designer.cs">
+      <DependentUpon>PersonelIslemleri.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PersonelModül\PersonelIslemleri\Raporlar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PersonelModül\PersonelIslemleri\Raporlar.Designer.cs">
+      <DependentUpon>Raporlar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PersonelModül\PersonelIslemleri\Unvan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PersonelModül\PersonelIslemleri\Unvan.Designer.cs">
+      <DependentUpon>Unvan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PersonelModül\Profil\IletisimBilgileri.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PersonelModül\Profil\IletisimBilgileri.Designer.cs">
+      <DependentUpon>IletisimBilgileri.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PersonelModül\Profil\KimlikBilgileri.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PersonelModül\Profil\KimlikBilgileri.Designer.cs">
+      <DependentUpon>KimlikBilgileri.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PersonelModül\Profil\ParolaIslemleri.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PersonelModül\Profil\ParolaIslemleri.Designer.cs">
+      <DependentUpon>ParolaIslemleri.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PersonelModül\StokIslemleri\SiparisDetay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PersonelModül\StokIslemleri\SiparisDetay.Designer.cs">
+      <DependentUpon>SiparisDetay.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PersonelModül\StokIslemleri\SiparisVer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PersonelModül\StokIslemleri\SiparisVer.Designer.cs">
+      <DependentUpon>SiparisVer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PersonelModül\StokIslemleri\StokEkle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PersonelModül\StokIslemleri\StokEkle.Designer.cs">
+      <DependentUpon>StokEkle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PersonelModül\StokIslemleri\StokGuncelle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PersonelModül\StokIslemleri\StokGuncelle.Designer.cs">
+      <DependentUpon>StokGuncelle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PersonelModül\StokIslemleri\StokIslemleri.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PersonelModül\StokIslemleri\StokIslemleri.Designer.cs">
+      <DependentUpon>StokIslemleri.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PersonelModül\StokIslemleri\TedarikciEkle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PersonelModül\StokIslemleri\TedarikciEkle.Designer.cs">
+      <DependentUpon>TedarikciEkle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PersonelModül\StokIslemleri\TedarikciGuncelle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PersonelModül\StokIslemleri\TedarikciGuncelle.Designer.cs">
+      <DependentUpon>TedarikciGuncelle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PersonelModül\StokIslemleri\Tedarikciİslemleri.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PersonelModül\StokIslemleri\Tedarikciİslemleri.Designer.cs">
+      <DependentUpon>Tedarikciİslemleri.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Randevularım.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Randevularım.Designer.cs">
+      <DependentUpon>Randevularım.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="DoktorModül\HastaKabul.resx">
+      <DependentUpon>HastaKabul.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DoktorModül\Poliklinik\Defter.resx">
+      <DependentUpon>Defter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DoktorModül\Poliklinik\HastaGecmis.resx">
+      <DependentUpon>HastaGecmis.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DoktorModül\Poliklinik\Ilac.resx">
+      <DependentUpon>Ilac.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DoktorModül\Poliklinik\Radyoloji.resx">
+      <DependentUpon>Radyoloji.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DoktorModül\Poliklinik\Tahlil.resx">
+      <DependentUpon>Tahlil.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DoktorModül\Poliklinik\TanıEkle.resx">
+      <DependentUpon>TanıEkle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DoktorModül\Profil\IletisimBilgileri.resx">
+      <DependentUpon>IletisimBilgileri.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DoktorModül\Profil\KisiselBilgiler.resx">
+      <DependentUpon>KisiselBilgiler.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DoktorModül\Profil\ParolaIslemleri.resx">
+      <DependentUpon>ParolaIslemleri.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GecmisRandevularım.resx">
+      <DependentUpon>GecmisRandevularım.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="hastaHome.resx">
+      <DependentUpon>hastaHome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="hastaKayit.resx">
+      <DependentUpon>hastaKayit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="hastaRandevu.resx">
+      <DependentUpon>hastaRandevu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IletisimBilgileri.resx">
+      <DependentUpon>IletisimBilgileri.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KimlikBilgileri.resx">
+      <DependentUpon>KimlikBilgileri.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="login.resx">
+      <DependentUpon>login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ParolaIslemleri.resx">
+      <DependentUpon>ParolaIslemleri.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PersonelModül\CihazIslemleri\BakimOnarimEkle.resx">
+      <DependentUpon>BakimOnarimEkle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PersonelModül\CihazIslemleri\BakimOnarimGuncelle.resx">
+      <DependentUpon>BakimOnarimGuncelle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PersonelModül\CihazIslemleri\BakimveOnarim.resx">
+      <DependentUpon>BakimveOnarim.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PersonelModül\CihazIslemleri\CihazEkle.resx">
+      <DependentUpon>CihazEkle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PersonelModül\CihazIslemleri\CihazGuncelle.resx">
+      <DependentUpon>CihazGuncelle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PersonelModül\CihazIslemleri\CihazIslemleri.resx">
+      <DependentUpon>CihazIslemleri.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PersonelModül\HastaIslemleri\BilgileriGoruntule.resx">
+      <DependentUpon>BilgileriGoruntule.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PersonelModül\HastaIslemleri\HastaIslemleri.resx">
+      <DependentUpon>HastaIslemleri.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PersonelModül\HastaIslemleri\HastaRandevular.resx">
+      <DependentUpon>HastaRandevular.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PersonelModül\HastaIslemleri\HastaReceteleri.resx">
+      <DependentUpon>HastaReceteleri.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PersonelModül\HastaIslemleri\MuayeneKayıtları.resx">
+      <DependentUpon>MuayeneKayıtları.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PersonelModül\HastaIslemleri\TahllGoruntulemeSonucları.resx">
+      <DependentUpon>TahllGoruntulemeSonucları.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PersonelModül\KlinikIslemleri\KlinikEkle.resx">
+      <DependentUpon>KlinikEkle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PersonelModül\KlinikIslemleri\KlinikGuncelle.resx">
+      <DependentUpon>KlinikGuncelle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PersonelModül\KlinikIslemleri\KlinikIslemleri.resx">
+      <DependentUpon>KlinikIslemleri.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PersonelModül\KlinikIslemleri\OdaEkle.resx">
+      <DependentUpon>OdaEkle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PersonelModül\KlinikIslemleri\OdaGuncelle.resx">
+      <DependentUpon>OdaGuncelle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PersonelModül\KlinikIslemleri\OdaIslemleri.resx">
+      <DependentUpon>OdaIslemleri.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PersonelModül\KlinikIslemleri\ServisEkle.resx">
+      <DependentUpon>ServisEkle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PersonelModül\KlinikIslemleri\ServisGuncelle.resx">
+      <DependentUpon>ServisGuncelle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PersonelModül\KlinikIslemleri\ServisIslemleri.resx">
+      <DependentUpon>ServisIslemleri.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PersonelModül\KlinikIslemleri\YatakEkle.resx">
+      <DependentUpon>YatakEkle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PersonelModül\KlinikIslemleri\YatakGuncelle.resx">
+      <DependentUpon>YatakGuncelle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PersonelModül\KlinikIslemleri\YatakIslemleri.resx">
+      <DependentUpon>YatakIslemleri.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PersonelModül\PersonelIslemleri\BilgileriGoruntule.resx">
+      <DependentUpon>BilgileriGoruntule.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PersonelModül\PersonelIslemleri\EgitimveSertifikalar.resx">
+      <DependentUpon>EgitimveSertifikalar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PersonelModül\PersonelIslemleri\IletisimBilgileriniGuncelle.resx">
+      <DependentUpon>IletisimBilgileriniGuncelle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PersonelModül\PersonelIslemleri\PersonelEkleme.resx">
+      <DependentUpon>PersonelEkleme.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PersonelModül\PersonelIslemleri\PersonelGuncelle.resx">
+      <DependentUpon>PersonelGuncelle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PersonelModül\PersonelIslemleri\PersonelIslemleri.resx">
+      <DependentUpon>PersonelIslemleri.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PersonelModül\PersonelIslemleri\Raporlar.resx">
+      <DependentUpon>Raporlar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PersonelModül\PersonelIslemleri\Unvan.resx">
+      <DependentUpon>Unvan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PersonelModül\Profil\IletisimBilgileri.resx">
+      <DependentUpon>IletisimBilgileri.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PersonelModül\Profil\KimlikBilgileri.resx">
+      <DependentUpon>KimlikBilgileri.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PersonelModül\Profil\ParolaIslemleri.resx">
+      <DependentUpon>ParolaIslemleri.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PersonelModül\StokIslemleri\SiparisDetay.resx">
+      <DependentUpon>SiparisDetay.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PersonelModül\StokIslemleri\SiparisVer.resx">
+      <DependentUpon>SiparisVer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PersonelModül\StokIslemleri\StokEkle.resx">
+      <DependentUpon>StokEkle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PersonelModül\StokIslemleri\StokGuncelle.resx">
+      <DependentUpon>StokGuncelle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PersonelModül\StokIslemleri\StokIslemleri.resx">
+      <DependentUpon>StokIslemleri.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PersonelModül\StokIslemleri\TedarikciEkle.resx">
+      <DependentUpon>TedarikciEkle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PersonelModül\StokIslemleri\TedarikciGuncelle.resx">
+      <DependentUpon>TedarikciGuncelle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PersonelModül\StokIslemleri\Tedarikciİslemleri.resx">
+      <DependentUpon>Tedarikciİslemleri.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Randevularım.resx">
+      <DependentUpon>Randevularım.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Oracle.DataAccess.Common.Configuration.Section.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Oracle.ManagedDataAccess.Client.Configuration.Section.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icons\loginGeo.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icons\login.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\left-arrow.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 ve x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 </ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\hospital1.png" />
+    <Resource Include="icons\drugs.png" />
+    <Resource Include="icons\woman.png" />
+    <Resource Include="icons\man.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\calendar1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons\clock.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Bu proje bu bilgisayarda olmayan NuGet paketlerine başvuru yapıyor. Bunları indirmek için NuGet Paket Geri Yükleme'yi kullanın. Daha fazla bilgi için, bkz. http://go.microsoft.com/fwlink/?LinkID=322105. Eksik dosya: {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\EntityFramework.6.5.1\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\EntityFramework.6.5.1\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('packages\EntityFramework.6.5.1\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\EntityFramework.6.5.1\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="packages\EntityFramework.6.5.1\build\EntityFramework.targets" Condition="Exists('packages\EntityFramework.6.5.1\build\EntityFramework.targets')" />
+</Project>
