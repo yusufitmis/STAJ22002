@@ -1,4 +1,4 @@
-# STAJ22001
+# STAJ22002
 * **Dersin Kodu** - 22002
 * **Dersin Adı** - Zorunlu Yaz Stajı 2
 ---
