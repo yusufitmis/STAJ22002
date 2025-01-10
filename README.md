@@ -1,12 +1,63 @@
-# STAJ22002
-* **Dersin Kodu** - 22002
-* **Dersin Adı** - Zorunlu Yaz Stajı 2
+# Hospital Management System / Hastane Yönetim Sistemi
+
+## Overview / Genel Bakış
+A comprehensive hospital management system that provides separate interfaces for patients, doctors, and staff, enabling efficient handling of appointments, patient management, and administrative tasks.
+
+Hastalar, doktorlar ve personel için ayrı giriş seçenekleri sunan, randevu, hasta yönetimi ve idari işlemleri verimli bir şekilde yönetmeyi sağlayan kapsamlı bir hastane yönetim sistemi.
+
 ---
 
-## Proje Açıklaması
-Bu proje, hastaların, doktorların ve sağlık personelinin sisteme üye olup randevu almasını, hasta kayıtlarını yönetmesini ve tedavi süreçlerini takip edebilmesini sağlamaktadır. Ayrıca, sistem yöneticileri de kullanıcı ekleyip çıkararak, hastane içindeki personel ve kaynak yönetimini kolaylaştırabilmektedir. Projenin veritabanı Oracle kullanılarak tasarlanmış, arayüzü C# ile geliştirilmiştir. Geliştirme süreci, C# dilinde ve Visual Studio ortamında gerçekleştirilmiştir.
-
 [Project Video](https://github.com/yusufitmis/STAJ22002/blob/main/hims.mp4)
+
+
+## Features / Özellikler
+
+### Patient Portal / Hasta Girişi
+- **Appointment Management / Randevu Yönetimi**  
+  - Select a clinic and view available doctors.  
+  - Book an appointment by selecting a preferred date and doctor.  
+  - Cancel appointments.  
+  - Klinik seçip uygun doktorları görüntüleyebilirsiniz.  
+  - Doktor ve tarih seçerek randevu alabilirsiniz.  
+  - Randevularınızı iptal edebilirsiniz.
+
+- **Profile Management / Profil Yönetimi**  
+  - Update email and password.  
+  - E-posta ve şifre güncelleyebilirsiniz.
+
+---
+
+### Doctor Portal / Doktor Girişi
+- Diagnose patients and write reports.  
+- Request lab tests and imaging services.  
+- Prescribe medication and manage prescriptions.  
+- Hastalara tanı koyabilir ve rapor yazabilirsiniz.  
+- Laboratuvar testleri ve görüntüleme işlemleri isteyebilirsiniz.  
+- Reçete düzenleyebilir ve ilaç yazabilirsiniz.
+
+---
+
+### Staff Portal / Personel Girişi
+- **Patient Management / Hasta Yönetimi**  
+  - Handle patient transfers and admissions.  
+  - Update patient information.  
+  - Hasta sevk ve yatış işlemlerini gerçekleştirebilir.  
+  - Hasta bilgilerini güncelleyebilirsiniz.
+
+- **Room and Bed Management / Oda ve Yatak Yönetimi**  
+  - Add new rooms and beds.  
+  - Yeni oda ve yatak ekleyebilirsiniz.
+
+- **Staff Management / Personel Yönetimi**  
+  - Update staff details.  
+  - Personel bilgilerini güncelleyebilirsiniz.
+
+- **Device Management / Cihaz Yönetimi**  
+  - Order new medical equipment.  
+  - Track maintenance schedules for devices.  
+  - Yeni cihaz sipariş edebilir ve cihaz bakım işlemlerinin takibini yapabilirsiniz.
+
+---
 
 ---
 ## Kurulum ve Kullanım
