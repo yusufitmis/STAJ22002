@@ -6,6 +6,8 @@
 ## Proje Açıklaması
 Bu proje, hastaların, doktorların ve sağlık personelinin sisteme üye olup randevu almasını, hasta kayıtlarını yönetmesini ve tedavi süreçlerini takip edebilmesini sağlamaktadır. Ayrıca, sistem yöneticileri de kullanıcı ekleyip çıkararak, hastane içindeki personel ve kaynak yönetimini kolaylaştırabilmektedir. Projenin veritabanı Oracle kullanılarak tasarlanmış, arayüzü C# ile geliştirilmiştir. Geliştirme süreci, C# dilinde ve Visual Studio ortamında gerçekleştirilmiştir.
 
+[Video Başlığı](https://github.com/yusufitmis/STAJ22002/blob/main/hims.mp4)
+
 ---
 ## Kurulum ve Kullanım
    1.Öncelikle bilgisayarınıza Oracle JDK indirin. <br>
